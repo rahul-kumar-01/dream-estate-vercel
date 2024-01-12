@@ -27,14 +27,14 @@ const app = express();
 
   
 app.use(cors({
-    origin: 'https://dream-estate-vercel.vercel.app',
+    origin: 'https://dream-estate.vercel.app',
     credentials: true,
   }));
   
   // Set additional headers
   app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', 'https://dream-estate-vercel.vercel.app'); // Adjust this to your client domain
+    res.header('Access-Control-Allow-Origin', 'https://dream-estate.vercel.app'); // Adjust this to your client domain
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     next();
