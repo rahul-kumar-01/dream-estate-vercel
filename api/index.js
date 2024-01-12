@@ -30,6 +30,21 @@ app.use(cors({
     origin: 'https://dream-estate.vercel.app',
     credentials: true,
   }));
+
+  const corsOptions = {
+    credentials: true, 
+    optionSuccessStatus: 200,
+    Headers: true,
+    exposedHeaders: 'Set-Cookie',
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+      'Access-Control-Allow-Origin',
+      'Content-Type',
+      'Authorization'
+    ]
+  };
+  app.use(cors(corsOptions));
+  
   
   // Set additional headers
   app.use(function(req, res, next) {
