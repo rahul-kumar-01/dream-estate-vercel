@@ -26,7 +26,7 @@ const app = express();
 
   
 app.use(cors({
-    origin: 'https://dream-estate-vercel.vercel.app',
+    origin: '*',
     credentials: true,
   }));
   
