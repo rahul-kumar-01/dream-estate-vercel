@@ -6,7 +6,7 @@ import {getDownloadURL, getStorage ,ref, uploadBytesResumable } from 'firebase/s
 import {updateUserStart,updateUserFailure,updateUserSuccess,deleteUserFailure,deleteUserStart,deleteUserSuccess,signOutFailure,signOutStart,signOutSuccess} from "../redux/user/userSlice.js";
 import {useDispatch} from "react-redux";
 import {Link} from 'react-router-dom'
-import { getUserListings } from '../../../api/controllers/user.controller.js';
+
 
 
 export default function Profile() {
