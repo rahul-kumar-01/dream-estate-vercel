@@ -4,7 +4,6 @@ import {errorHandler} from '../utils/error.js'
 
 export const createListing = async(req,res,next) => {
     try{
-        console.log('asdfasf');
         const listing = await Listing.create(req.body);
         return res.status(201).json(listing);
     }catch(err){
@@ -30,8 +29,6 @@ export const deleteListing = async (req,res,next) => {
     }catch(error){
         next(err);
     }
-
-
 }
 
 export const updateListing = async (req,res,next) => {

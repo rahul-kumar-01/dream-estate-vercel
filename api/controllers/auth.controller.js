@@ -34,9 +34,10 @@ export const signin = async(req,res,next)=>{
         console.log(token);
         console.log(process.env.JWT_SECRET);
         const {password: pass, ...rest} = validUser._doc;
-        res.cookie('access_token', token ,
+        return res.cookie('access_token', token ,
          {
-            httpOnly: true, //no other 3rd party access to cookie
+            httpOnly: true,
+            secure: false, //no other 3rd party access to cookie
             // expires : new Date(Date.now() + 24*60*60*1000) //24 ?
             // maxAge: 
          }
