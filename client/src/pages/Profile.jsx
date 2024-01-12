@@ -64,11 +64,11 @@ export default function Profile() {
         dispatch(updateUserStart());
         const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/update/${currentUser._id}`, {
           method: 'POST',
-          headers:{
+          headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
-          credentials: 'include',           //complusary for cookies
+          credentials: 'include',
         })
       const data = await res.json();
         if(data.success === false){
