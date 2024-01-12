@@ -7,7 +7,7 @@ export default defineConfig({
     proxy:{
       // '/api': 'http://localhost:3000'   can't use this becuase it's not secure each time you /api add http://localhost:3000 at beginning
       '/api':{
-        target: 'http://localhost:3000',
+        target: 'https://dream-estate-vercel-api-eight.vercel.app',
         secure:false,
       },
     },
