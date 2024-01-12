@@ -62,7 +62,7 @@ export default function Profile() {
     event.preventDefault();
     try{
         dispatch(updateUserStart());
-        const res = await fetch(`https://dream-estate-vercel.vercel.app/api/user/update/${currentUser._id}`, {
+        const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/update/${currentUser._id}`, {
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
