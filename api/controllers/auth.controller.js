@@ -2,6 +2,7 @@ import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import  jwt  from 'jsonwebtoken';
+import { set } from 'mongoose';
 
 
 export const signup = async (req,res,next) =>{
@@ -34,6 +35,8 @@ export const signin = async(req,res,next)=>{
         console.log(token);
         console.log(process.env.JWT_SECRET);
         const {password: pass, ...rest} = validUser._doc;
+        setCookie('access_token',token,{httpOnly: true});
+        
         return res.cookie('access_token', token ,
          {
             httpOnly: true,
