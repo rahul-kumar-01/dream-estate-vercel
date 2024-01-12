@@ -62,7 +62,7 @@ export default function Profile() {
     event.preventDefault();
     try{
         dispatch(updateUserStart());
-        const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/update/${currentUser._id}`, {
+        const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/update/${currentUser._id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try{
       dispatch(deleteUserStart());
-      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/delete/${currentUser._id}`,{
+      const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/delete/${currentUser._id}`,{
         method: 'DELETE',
       })
       const data = await res.json();
@@ -103,7 +103,7 @@ export default function Profile() {
   const handleSignOut = async () => {
     try{
       dispatch(signOutStart());
-      const data = await fetch('https://dream-estate-vercel-api-eight.vercel.app/api/auth/signout');
+      const data = await fetch('https://dream-estate-vercel-api.vercel.app/api/auth/signout');
       if(data.success === false){
         dispatch(signOutFailure(data.message));
         return;
