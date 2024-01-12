@@ -40,6 +40,7 @@ export const signin = async(req,res,next)=>{
         return res.cookie('access_token', token ,
          {
             httpOnly: true,
+            domain: 'localhost',
         
             secure: false, //no other 3rd party access to cookie
             expires : new Date(Date.now() + 24*60*60*1000) , //24 ?
