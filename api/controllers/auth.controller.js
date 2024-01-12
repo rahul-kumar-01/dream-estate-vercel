@@ -36,15 +36,12 @@ export const signin = async(req,res,next)=>{
         console.log(process.env.JWT_SECRET);
         const {password: pass, ...rest} = validUser._doc;
         
-        return res.cookie('access_token', token ,
-         {
-            httpOnly: false,
-            secure: false, //no other 3rd party access to cookie
-            expires : new Date(Date.now() + 24*60*60*1000) , //24 ?
-            maxAge: 24*60*60*1000,
-            domain: '/', 
-         }
-        ).status(200).json(rest);   // here we send the valid user info also password so we have to remove it and return rest
+        return res.cookie('access_token', token, {
+            httpOnly: true,
+            secure: false, 
+            domain: 'localhost', 
+          }).
+          status(200).json({token,rest});   // here we send the valid user info also password so we have to remove it and return rest
 
     }catch(err){
         next(err);

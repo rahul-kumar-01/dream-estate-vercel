@@ -24,17 +24,22 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  
+app.use(cors({
+    origin: 'https://dream-estate-vercel.vercel.app/',
+    credentials: true,
+  }));
+  
+  // Set additional headers
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', 'https://dream-estate-vercel.vercel.app/'); // Adjust this to your client domain
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     next();
   });
 
-app.use(cors({
-    origin: '*',
-    credentials: true,
-}));
+
 
 app.use(express.json()); // allow json as input to the server (req)
 app.use(cookieParser());
@@ -45,13 +50,7 @@ app.listen(3000,()=>{
     console.log('Server is running');
 })
 
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', 'https://dream-estate-vercel.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-    next();
-  });
+
 
 
 app.get('/test',(req,res)=>{
