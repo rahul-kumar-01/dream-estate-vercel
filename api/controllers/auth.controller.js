@@ -39,9 +39,8 @@ export const signin = async(req,res,next)=>{
         return res.cookie('access_token', token, {
             httpOnly: true,
             secure: false, 
-            domain: 'localhost', 
-          }).
-          status(200).json({token,rest});   // here we send the valid user info also password so we have to remove it and return rest
+            domain: 'dream-estate-vercel.vercel.app',
+          }).status(200).json({ token, rest });  
 
     }catch(err){
         next(err);
