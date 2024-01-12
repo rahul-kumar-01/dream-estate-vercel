@@ -8,9 +8,13 @@ export default defineConfig({
       '/api': {
         target: 'https://dream-estate-vercel-api-eight.vercel.app',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
       },
     },
   },
 });
 
 
+
+//message : add server proxy 

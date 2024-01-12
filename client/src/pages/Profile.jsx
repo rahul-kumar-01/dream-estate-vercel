@@ -6,7 +6,7 @@ import {getDownloadURL, getStorage ,ref, uploadBytesResumable } from 'firebase/s
 import {updateUserStart,updateUserFailure,updateUserSuccess,deleteUserFailure,deleteUserStart,deleteUserSuccess,signOutFailure,signOutStart,signOutSuccess} from "../redux/user/userSlice.js";
 import {useDispatch} from "react-redux";
 import {Link} from 'react-router-dom'
-
+import { getUserListings } from '../../../api/controllers/user.controller.js';
 
 
 export default function Profile() {
@@ -62,7 +62,7 @@ export default function Profile() {
     event.preventDefault();
     try{
         dispatch(updateUserStart());
-        const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/update/${currentUser._id}`, {
           method: 'POST',
           headers:{
             'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try{
       dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`,{
+      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/delete/${currentUser._id}`,{
         method: 'DELETE',
       })
       const data = await res.json();
@@ -102,7 +102,7 @@ export default function Profile() {
   const handleSignOut = async () => {
     try{
       dispatch(signOutStart());
-      const data = await fetch('/api/auth/signout');
+      const data = await fetch('https://dream-estate-vercel-api-eight.vercel.app/api/auth/signout');
       if(data.success === false){
         dispatch(signOutFailure(data.message));
         return;
@@ -117,7 +117,7 @@ export default function Profile() {
   const handleShowListing = async () => {
     try{
       setShowListingError(false);
-      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/listings/${currentUser._id}`);
       const data = await res.json();
       if(data.success === false){
         setShowListingError(true);
@@ -131,7 +131,7 @@ export default function Profile() {
 
   const handleListingDelete = async (listingId) => {
     try{
-      const res = await fetch(`/api/listing/delete/${listingId}` ,{
+      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/listing/delete/${listingId}` ,{
         method : 'DELETE',
       });
       const data = await res.json();
