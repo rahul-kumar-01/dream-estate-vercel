@@ -7,7 +7,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'https://dream-estate-vercel-api-eight.vercel.app',
-        secure: true,  // Set to true for production
+        secure: false,  
       },
     },
   },
