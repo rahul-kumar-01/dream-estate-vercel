@@ -25,14 +25,14 @@ export default function SignIn() {
     try{
 
         dispatch(signInStart());
-      const res = await fetch('https://dream-estate-vercel-api-eight.vercel.app/api/auth/signin',
+      const res = await fetch('http://localhost:3000/api/auth/signin',
       {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
         },
         body: JSON.stringify(formData),
-        credentials: 'include', 
+        credrentials: 'include',
       });
       const data = await res.json();
 
@@ -41,6 +41,7 @@ export default function SignIn() {
         return;
       }
       const token = data.token;
+      document.cookie = `access_token=${data.token}; path=/;`;
       dispatch(signInSuccess(data.rest));
       
 
