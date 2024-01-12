@@ -66,9 +66,10 @@ export default function Profile() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+
           },
           body: JSON.stringify(formData),
-          withCredentials: true,
+          credentials: 'include',
         })
       const data = await res.json();
         if(data.success === false){
