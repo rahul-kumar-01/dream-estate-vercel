@@ -39,7 +39,7 @@ export const signin = async(req,res,next)=>{
         return res.cookie('access_token', token, {
             httpOnly: true,
             secure: false, 
-            domain: 'dream-estate-vercel.vercel.app',
+            domain: 'https://dream-estate-vercel.vercel.app',
           }).status(200).json({ token, rest });  
 
     }catch(err){
