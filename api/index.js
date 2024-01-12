@@ -24,9 +24,10 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 
+
   
 app.use(cors({
-    origin: 'https://dream-estate-vercel.vercel.app',
+    origin: 'https://dream-estate-vercel.vercel.app/',
     credentials: true,
   }));
   
