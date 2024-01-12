@@ -21,34 +21,30 @@ export default function SignIn() {
   // console.log(formData);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-   
-
-    // const res = await fetch('/api/auth/signup' ,formData);  we have to stringfy the formdata it's not secure 
-    // if error come  use try and catch to fix it in catch setEroor(err.message);
+    e.preventDefault();    
     try{
-       // setLoading(true);
+
         dispatch(signInStart());
-      const res = await fetch('https://dream-estate-vercel-api-eight.vercel.app/api/auth/signin',
+      const res = await fetch('http://localhost:3000/api/auth/signin',
       {
         method: 'POST',
         headers: {
           'Content-Type' : 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        credentials: 'include',
       });
       const data = await res.json();
+
       if(data.success === false) {
-        // setError(data.message);
-        // setLoading(false);
         dispatch(signInFailure(data.message));
         return;
       }
-      // setLoading(false);
-      // setError(null);
-      dispatch(signInSuccess(data));
-      console.log(data);
+      const token = data.token;
+
+      dispatch(signInSuccess(data.rest));
+      
+
       navigate('/');
     }catch(error){
       // setLoading(false);
