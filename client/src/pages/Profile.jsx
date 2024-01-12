@@ -68,7 +68,7 @@ export default function Profile() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
-          credentials: 'include',
+          withCredentials: true,
         })
       const data = await res.json();
         if(data.success === false){
