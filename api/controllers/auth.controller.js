@@ -37,9 +37,10 @@ export const signin = async(req,res,next)=>{
         return res.cookie('access_token', token ,
          {
             httpOnly: true,
+        
             secure: false, //no other 3rd party access to cookie
-            // expires : new Date(Date.now() + 24*60*60*1000) //24 ?
-            // maxAge: 
+            expires : new Date(Date.now() + 24*60*60*1000) , //24 ?
+            maxAge: 24*60*60*1000
          }
         ).status(200).json(rest);   // here we send the valid user info also password so we have to remove it and return rest
 
