@@ -139,7 +139,7 @@ export default function CreateListing() {
 
       setLoading(true);
       setError(false);
-      const res = await fetch(`/api/listing/update/${params.listingId}`,{
+      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/listing/update/${params.listingId}`,{
         method : 'POST',
         headers:{
           'Content-Type' : 'application/json',
