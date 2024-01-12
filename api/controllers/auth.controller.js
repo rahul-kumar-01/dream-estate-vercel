@@ -37,7 +37,7 @@ export const signin = async(req,res,next)=>{
         const {password: pass, ...rest} = validUser._doc;
         
         return res.cookie('access_token', token, {
-            httpOnly: true,
+            httpOnly: false,
             secure: true, 
             domain: 'dream-estate-vercel-api-eight.vercel.app',
             credentials: true,
