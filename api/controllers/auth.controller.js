@@ -35,18 +35,16 @@ export const signin = async(req,res,next)=>{
         console.log(token);
         console.log(process.env.JWT_SECRET);
         const {password: pass, ...rest} = validUser._doc;
-        const cookieOptions = {
+        
+        return res.cookie('access_token', token ,
+         {
             httpOnly: true,
-            domain: 'dream-estate-vercel.vercel.app', // replace with your actual domain
-            expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
-            maxAge: 24 * 60 * 60 * 1000,
-          };
-        
-          const cookie = serialize('access_token', token, cookieOptions);
-          res.setHeader('Set-Cookie', cookie);
-        
-        
-        return res.status(200).json(rest);   // here we send the valid user info also password so we have to remove it and return rest
+            secure: false, //no other 3rd party access to cookie
+            expires : new Date(Date.now() + 24*60*60*1000) , //24 ?
+            maxAge: 24*60*60*1000,
+            domain: '.vercel.app', 
+         }
+        ).status(200).json(rest);   // here we send the valid user info also password so we have to remove it and return rest
 
     }catch(err){
         next(err);
