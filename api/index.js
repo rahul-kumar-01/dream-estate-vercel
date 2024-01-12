@@ -6,6 +6,7 @@ import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js'
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -22,6 +23,12 @@ mongoose.connect(process.env.MONGO)
 
 
 const app = express();
+
+app.use(cors({
+    origin: '*',
+    credentials: true,
+}));
+
 app.use(express.json()); // allow json as input to the server (req)
 app.use(cookieParser());
 
