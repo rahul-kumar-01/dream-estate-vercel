@@ -34,6 +34,8 @@ export default function CreateListing() {
   useEffect(()=>{
     const fetchListing = async () =>{
       const listingId = params.listingId;
+      console.log("listingId",listingId);
+
       const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/listing/get/${listingId}`);
       const data = await res.json();
       if(data.success === false){
@@ -41,7 +43,6 @@ export default function CreateListing() {
         return;
       }
       setFormData(data);
-
     }
     fetchListing();
   },[])
@@ -128,6 +129,9 @@ export default function CreateListing() {
       })
     }
   }
+  
+
+
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -139,7 +143,7 @@ export default function CreateListing() {
 
       setLoading(true);
       setError(false);
-      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/listing/update/${params.listingId}`,{
+      const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/listing/update/${params.listingId}`,{
         method : 'POST',
         headers:{
           'Content-Type' : 'application/json',

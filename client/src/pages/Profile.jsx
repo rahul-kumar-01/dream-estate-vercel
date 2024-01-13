@@ -120,7 +120,7 @@ export default function Profile() {
     try{
       setShowListingError(false);
       const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/listings/${currentUser._id}`,{
-        credentials: 'include',
+        credentials: 'include',   // to send cookie 
       });
       const data = await res.json();
       if(data.success === false){
