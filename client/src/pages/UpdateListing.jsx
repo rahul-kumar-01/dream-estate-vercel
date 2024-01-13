@@ -34,7 +34,6 @@ export default function CreateListing() {
   useEffect(()=>{
     const fetchListing = async () =>{
       const listingId = params.listingId;
-      console.log("listingId",listingId);
 
       const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/listing/get/${listingId}`);
       const data = await res.json();
