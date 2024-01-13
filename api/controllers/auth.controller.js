@@ -43,7 +43,7 @@ export const signin = async(req,res,next)=>{
             sameSite : 'none',
           }).status(200).json({ token, rest });  
 
-
+          
     }catch(err){
         next(err);
     }

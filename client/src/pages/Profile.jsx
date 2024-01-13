@@ -119,7 +119,9 @@ export default function Profile() {
   const handleShowListing = async () => {
     try{
       setShowListingError(false);
-      const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/listings/${currentUser._id}`,{
+        credentials: 'include',
+      });
       const data = await res.json();
       if(data.success === false){
         setShowListingError(true);
