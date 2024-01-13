@@ -40,6 +40,7 @@ export const signin = async(req,res,next)=>{
             httpOnly: false,
             secure: true, 
             domain: 'dream-estate-vercel-api.vercel.app',
+            sameSite : 'none',
           }).status(200).json({ token, rest });  
 
 
