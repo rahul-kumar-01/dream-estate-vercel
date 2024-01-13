@@ -17,6 +17,7 @@ export default function OAuth() {
             const result = await signInWithPopup(auth,provider);
             const res = await fetch('https://dream-estate-vercel-api.vercel.app/api/auth/google',{
                 method: 'POST',
+                credentials: 'include',
                 headers:{
                     'Content-Type' : 'application/json',
                 },
