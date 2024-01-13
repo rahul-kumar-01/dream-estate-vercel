@@ -119,7 +119,7 @@ export default function Profile() {
   const handleShowListing = async () => {
     try{
       setShowListingError(false);
-      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/listings/${currentUser._id}`);
       const data = await res.json();
       if(data.success === false){
         setShowListingError(true);
@@ -133,7 +133,7 @@ export default function Profile() {
 
   const handleListingDelete = async (listingId) => {
     try{
-      const res = await fetch(`https://dream-estate-vercel-api-eight.vercel.app/api/listing/delete/${listingId}` ,{
+      const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/listing/delete/${listingId}` ,{
         method : 'DELETE',
       });
       const data = await res.json();

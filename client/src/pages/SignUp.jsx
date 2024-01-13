@@ -21,7 +21,7 @@ export default function SignUp() {
     // const res = await fetch('/api/auth/signup' ,formData);  we have to stringfy the formdata it's not secure 
     // if error come  use try and catch to fix it in catch setEroor(err.message);
     try{
-      const res = await fetch('https://dream-estate-vercel-api-eight.vercel.app/api/auth/signup',
+      const res = await fetch('https://dream-estate-vercel-api.vercel.app/api/auth/signup',
       {
         method: 'POST',
         headers: {
