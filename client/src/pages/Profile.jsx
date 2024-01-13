@@ -89,6 +89,7 @@ export default function Profile() {
       dispatch(deleteUserStart());
       const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/user/delete/${currentUser._id}`,{
         method: 'DELETE',
+        credentials: 'include',
       })
       const data = await res.json();
       if(data.success === false){
@@ -137,6 +138,7 @@ export default function Profile() {
     try{
       const res = await fetch(`https://dream-estate-vercel-api.vercel.app/api/listing/delete/${listingId}` ,{
         method : 'DELETE',
+        credentials: 'include',
       });
       const data = await res.json();
       if(data.success === false){

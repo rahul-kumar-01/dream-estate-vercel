@@ -124,6 +124,7 @@ export default function CreateListing() {
       setError(false);
       const res = await fetch('https://dream-estate-vercel-api.vercel.app/api/listing/create',{
         method : 'POST',
+        credentials: 'include',
         headers:{
           'Content-Type' : 'application/json',
         },
