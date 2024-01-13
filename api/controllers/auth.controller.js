@@ -73,9 +73,10 @@ export const google = async (req,res,next) => {
             const {password:pass, ...rest} = newUser._doc;
             res
             .cookie('access_token',token,{
-                httpOnly: true,
-                secure: true,
-                domain: 'dream-estate-vercel-api.vercel.app'
+                httpOnly: false,
+                secure: true, 
+                domain: 'dream-estate-vercel-api.vercel.app',
+                sameSite : 'none',                      
             }
             )
             .status(200)
